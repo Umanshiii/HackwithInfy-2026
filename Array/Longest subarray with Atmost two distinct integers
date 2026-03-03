@@ -1,0 +1,28 @@
+class Solution:
+    def totalElements(self, arr):
+        left = 0
+        right = 0
+        freq = {}
+        maxlen = 0
+        
+        while right < len(arr):
+            
+            # add current element
+            if arr[right] in freq:
+                freq[arr[right]] += 1
+            else:
+                freq[arr[right]] = 1
+            
+            # shrink window if more than 2 distinct
+            while len(freq) > 2:
+                freq[arr[left]] -= 1
+                if freq[arr[left]] == 0:
+                    del freq[arr[left]]
+                left += 1
+            
+            # update max length
+            maxlen = max(maxlen, right - left + 1)
+            
+            right += 1
+        
+        return maxlen
