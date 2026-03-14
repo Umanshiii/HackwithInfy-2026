@@ -1,6 +1,8 @@
+
 h=[3,2,3]
 stack=[]
 max_area=0
+
 def largestRectangle(h):
     n = len(h)
     ans = 0
@@ -17,3 +19,4 @@ def largestRectangle(h):
     return ans
 
 print(largestRectangle(h))
+
