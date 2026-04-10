@@ -8,15 +8,14 @@ c = [8,3, 1, 2]
 
 There are 3 ways to make change for n = 3: {1, 1, 1}, {1, 2}, and {3}.
 '''
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        m = [amount + 1] * (amount + 1)
+        m[0] = 0
 
-def getWays(n, c):
-    # Write your code here
-    m = [0] * (n + 1)
-    m[0] = 1
+        for i in coins:
+            for j in range(i, amount + 1):
+                m[j] = min(m[j],m[j - i]+ 1)
 
-    for i in c:
-        for j in range(i, n + 1):
-            m[j] += m[j - i]
-
-    count = m[n]
-    return count
+        count = m[amount]
+        return count if count<=amount else -1
