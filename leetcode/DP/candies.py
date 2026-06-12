@@ -1,4 +1,5 @@
 def candies(n, arr):
+    
     ans=[1]*n
     for i in range(1,n):
         if arr[i]>arr[i-1]:
